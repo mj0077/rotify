@@ -48,7 +48,19 @@ section {
   width: 200px;
   height: 100px;
   filter:
-    drop-shadow(2px 3px 0px #000a) drop-shadow(2px 3px 0px #000a) drop-shadow(0 0 20px #ff5151) drop-shadow(0 0 10px #ff5050)
+    drop-shadow(2px 3px 0px #000a) drop-shadow(2px 3px 0px #000a) drop-shadow(0 0 20px #ff5151) drop-shadow(0 0 10px #ff5050);
+  animation: logo-animate 5s step-start infinite;
+}
+
+@keyframes logo-animate {
+  3%, 7%, 12%{
+    opacity: 0.2;
+  }
+  0%, 4%, 10%, 16%, 50%, 100%{
+    opacity: 1;
+  }
+
+  
 }
 
 .shadow-nav {

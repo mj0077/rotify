@@ -14,7 +14,7 @@ const Map = () => {
                     loading="lazy"
                     allowFullScreen
                     frameBorder="0"
-                    src={`https://www.google.com/maps/embed/v1/search?q=rotify+lakhmi+vihar&key=${process.env.GOOGLE_KEY}`}></iframe>
+                    src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=lakhmi vihar&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
             </div>
         </>
     )
