@@ -15,7 +15,7 @@ const InfoBoxes = () => {
             <div className="bg-blue-500/30 p-6 rounded-lg shadow-md infoboxes-cards" id="whatsapp-card">
               <h2 className="text-2xl font-bold text-yellow-300">Contact Us</h2>
               <p className="mt-2 mb-4">
-                Check out Today's Menu, and let us know what suits you the best.
+                Check out Today&apos;s Menu, and let us know what suits you the best.
               </p>
               <span
                 href="https://wa.me/918266882636"

@@ -1,4 +1,5 @@
 import React from 'react'
+// import 'dotenv/config'
 
 const Map = () => {
     return (
@@ -13,7 +14,7 @@ const Map = () => {
                     loading="lazy"
                     allowFullScreen
                     frameBorder="0"
-                    src="https://www.google.com/maps/embed/v1/search?q=rotify+lakhmi+vihar&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                    src={`https://www.google.com/maps/embed/v1/search?q=rotify+lakhmi+vihar&key=${process.env.GOOGLE_KEY}`}></iframe>
             </div>
         </>
     )
