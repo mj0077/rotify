@@ -1,0 +1,616 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+/* 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+} */
+
+body.body {
+  background-color: #2f2e33;
+}
+
+section {
+  z-index: 10;
+}
+
+/* .bg-veggies{
+  position: sticky;
+  top: 0;
+  z-index: -1;
+} */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  backdrop-filter: blur(10px);
+}
+
+.navbar .logo {
+  width: 200px;
+  height: 100px;
+  filter:
+    drop-shadow(2px 3px 0px #000a) drop-shadow(2px 3px 0px #000a) drop-shadow(0 0 20px #ff5151) drop-shadow(0 0 10px #ff5050)
+}
+
+.shadow-nav {
+  border-radius: 50px;
+}
+
+
+/* =================== */
+/* MEAL BOX PLANS PAGE */
+.my-plate-cover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: black; */
+  background: url("../images/plate.jpg");
+  /* object-fit: contain; */
+  /* z-index: 0; */
+  background-size: 100% 125%;
+  background-position: -10% 30%;
+  opacity: 75%;
+}
+
+.my-plate-cover {
+  position: relative;
+  z-index: 1;
+  padding-top: 150px;
+}
+
+
+.plan-card::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* background-color: rgb(30 41 59 / 0.5); */
+  background: radial-gradient(rgba(30, 41, 59, 0.5) 0%, rgba(197, 34, 34, 0.3));
+  background-origin: left;
+  border-radius: 0.5rem;
+  z-index: -1;
+}
+
+.plan-card {
+  /* background-color: rgb(30 41 59 / 0.5); */
+  /* background: radial-gradient(rgb(255, 157, 0), rgba(30, 41, 59, 0.5)); */
+  box-shadow: inset 1px 1px 1px #fff8, inset -1px -1px 2px #0009,
+    1px 1px 1px 1px #0009;
+
+  backdrop-filter: blur(10px);
+  position: relative;
+  /* z-index: 10; */
+  transition: transform 0.2s ease-in-out;
+
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* MAIN HOME PAGE */
+
+.hero-background {
+  position: relative;
+  overflow: hidden;
+  background: #0006;
+  /* background-image: url("../images/hero-bg2.jpg"); */
+  /* mix-blend-mode: overlay; */
+  height: fit-content;
+  box-shadow: 0 2px 0 #0008;
+  /* backdrop-filter: blur(0.5px) contrast(0.75) brightness(1.25); */
+  backdrop-filter: blur(0.5px);
+}
+
+.wrapper {
+  height: 100%;
+  background: #0000;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  width: 15%;
+  height: 150%;
+  rotate: 25deg;
+  top: -25%;
+  left: 10%;
+  background: linear-gradient(to right, #fff1, 40%, #0000, 40%, #0000, 60%, #fff4, 60%, #fff4);
+  mix-blend-mode: hue;
+  animation: shine 5s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+  animation-delay: 10s;
+
+}
+
+@keyframes shine {
+  0% {
+    transform: translate(-500px, 200px);
+  }
+
+  25%,
+  100% {
+    transform: translate(1200px, -500px);
+  }
+}
+
+.infoboxes-cards {
+  /* background: -webkit-linear-gradient(to right,
+      #ff000060,
+      #ffd50060);
+  background: linear-gradient(to right,
+      #ff000060,
+      #ffd50060); */
+
+  background: #0001;
+  box-shadow: inset 2px 2px 2px #fff8, inset -1px -1px 2px #0009,
+    1px 1px 2px 2px #0009;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.infoboxes-cards p {
+  font-size: 12px;
+}
+
+#whatsapp-card::before {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 150%;
+  top: -10%;
+  right: 2%;
+  scale: 0.9;
+  background-image: url('../images/wa.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+#schedule-card::before {
+  content: '';
+  position: absolute;
+  width: 35%;
+  height: 150%;
+  top: 2%;
+  right: 5%;
+  scale: 0.9;
+  background-image: url('../images/calendar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.separator {
+  margin: -10vh 0;
+  position: absolute;
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(to bottom, #0000, 5%, #2f2e33, 90%, #0000);
+  z-index: 1;
+}
+
+.features-section .wrapper {
+  background-color: #000c;
+}
+
+.home-cooked {
+  position: relative;
+  height: 100vh;
+  z-index: 8;
+}
+
+.home-cooked::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: url("../images/new_bg.png"); */
+  background-size: 100% 100%;
+  z-index: -1;
+}
+
+.footer {
+  padding: auto 0;
+  height: 50px;
+  text-align: center;
+  color: #fde047;
+  /* background: url("../images/veggies.webp"); */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+/* 
+MEDIA QUERIES HERE:
+*/
+/* @media (max-width: 1024px) {
+  #whatsapp-card::before {
+    top: 5%;
+  }
+
+} */
+
+@media only screen and (min-width: 300px) and (max-width: 1200px) {
+
+  .bg-veggies {
+    /* background-blend-mode: darken; */
+    background-position-x: 75%;
+  }
+
+  .wrapper {
+    background: #0004;
+    backdrop-filter: blur(1px);
+  }
+
+  .navbar {
+    width: 95vw;
+    transform: translateX(-50%);
+    margin-left: 0;
+    backdrop-filter: blur(15px);
+  }
+
+
+  .navbar .logo {
+    height: 85px;
+    min-width: 170px;
+    margin-left: 50%;
+    filter:
+      drop-shadow(2px 3px 0px #000a) drop-shadow(2px 3px 0px #000a) drop-shadow(0 0 20px #ff8a8a50) drop-shadow(0 0 10px #ff5050);
+  }
+
+  #mobile-menu {
+    transition: all 0.5s ease-in;
+    animation: menu-open 0.3s ease-in-out forwards;
+  }
+
+  @keyframes menu-open {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .shadow-nav {
+    /* border-radius: 10%; */
+    box-shadow: 0 0 10px 3px #000;
+  }
+
+  .hero-background {
+    height: fit-content;
+    padding: 0 30px;
+    padding-right: 100px;
+  }
+
+  #whatsapp-card {
+    margin-left: 0;
+    width: 90vw;
+  }
+
+  /* Review Section */
+  .reviews-section {
+
+    padding: 50px 0;
+    height: 80vh;
+    margin: 30px 0;
+    background-size: contain;
+  }
+
+  .review-container {
+    height: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .reviews-heading {
+    text-align: center;
+    color: #1E3A8A;
+    font-family: 'Lato';
+    font-size: 27px;
+    font-weight: 900;
+    margin-bottom: 30px;
+  }
+
+  .reviews-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background: #F3F4F6;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .nav-btn {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27.5px;
+    height: 27.5px;
+    padding: 1px;
+    margin: 15px 35px;
+    border-radius: 30%;
+    transition: background-color 0.3s;
+    border: 1px solid #1E3A8A40;
+  }
+
+  .nav-btn:hover {
+    background-color: #F3F4F6;
+  }
+
+  .nav-btn svg {
+    stroke: #48AC70;
+  }
+
+  .dots {
+    display: flex;
+    gap: 3px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #8F8F8F;
+  }
+
+  .dot.active {
+    width: 8px;
+    height: 8px;
+    background-color: #1E3A8A;
+  }
+
+  .review-wrapper {
+    position: absolute;
+    top: 0;
+    width: 350px;
+    opacity: 0.5;
+    scale: 0.8;
+    z-index: 100;
+    transition: all 0.3s ease;
+  }
+
+  .review-wrapper.active {
+    scale: 1;
+    opacity: 1;
+  }
+
+  .review-content {
+    background-color: #fff;
+    padding: 41px 36px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    font-size: 12px;
+    border-radius: 6px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .review-content::before {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: 46%;
+    width: 6%;
+    height: 15%;
+    background: linear-gradient(52deg, #dee7ff, 50%, #fff, 50%, #fff);
+  }
+
+  .commas.opening-quote {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    background-image: url('/assets/icons/opening-quote.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .commas.closing-quote {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: 7.5%;
+    right: 5%;
+    background-image: url('/assets/icons/closing-quote.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .review-text {
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .reviewer-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .reviewer-avatar {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-sizing: content-box;
+    border: 3px solid #dee7ff;
+  }
+
+  .reviewer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .reviewer-info {
+    flex-grow: 1;
+    margin-left: 16px;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .reviewer-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: #1E3A8A;
+  }
+
+  .reviewer-school {
+    font-size: 12px;
+    color: #6B7280;
+  }
+
+  /* PLANS AND PRICING PAGE */
+  .my-plate-cover {
+    padding-top: 100px;
+  }
+
+  .my-plate-cover::before {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .plan-card {
+    scale: 0.85;
+  }
+
+  #whatsapp-card::before {
+    width: 50%;
+    top: 10%;
+    left: 50%;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1024px) {
+  .hero-background {
+    height: 60%;
+    padding: 0 30px;
+    padding-right: 100px;
+  }
+
+  .hero-background h1 {
+    font-size: 45px;
+    line-height: 1.25;
+  }
+
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+  
+  .navbar .logo {
+    margin-left: 0;
+  }
+
+  .hero-background h1 {
+    margin-top: 0;
+    font-size: 62px;
+    line-height: 1.25;
+  }
+
+  .infoboxes-cards#whatsapp-card {
+    min-height: 300px;
+    width: 80vw;
+    margin-left: -20%;
+    font-size: 20px;
+    padding: 50px;
+    padding-right: 300px;
+  }
+
+  .infoboxes-cards h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+  }
+
+  .infoboxes-cards p {
+    font-size: 24px;
+
+  }
+
+  #whatsapp-card::before {
+    opacity: 0.4;
+    top: -7.5%;
+  }
+
+  .map{
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1024px) {
+  .navbar .logo {
+    margin-left: 10%;
+  }
+
+  .hero-background h1 {
+    margin-top: 20%;
+    font-size: 75px;
+    line-height: 1.25;
+  }
+
+
+}
