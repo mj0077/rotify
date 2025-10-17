@@ -24,7 +24,7 @@ const Review = () => {
   return (
     <>
       { reviews.map((review, idx) => 
-        <div className="bg-linear-[90deg] from-blue-400 to-purple-800 backdrop-blur-md rounded-xl shadow-[-1px_-1px_1px_#fff5,1px_1px_1px_#000,0_1px_35px_#0003] p-5 flex flex-col h-full">
+        <div key={idx} className="bg-linear-[90deg] from-blue-400 to-purple-800 backdrop-blur-md rounded-xl shadow-[-1px_-1px_1px_#fff5,1px_1px_1px_#000,0_1px_35px_#0003] p-5 flex flex-col h-full">
             {/* Quotation mark icon */}
             <div className="text-4xl text-blue-300 font-bold mb-2 rounded-full bg-[#e1e1e1] w-8 h-8 grid place-items-center">
                 <svg width="15" height="14" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
