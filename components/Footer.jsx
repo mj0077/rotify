@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import logo from "@/assets/images/footer-logo.png";
+import logo from "@/assets/images/footer-logo.jpeg";
 import Link from 'next/link'
 import React from 'react'
 import { FaWhatsapp } from "react-icons/fa";
@@ -7,22 +7,21 @@ import { FaWhatsapp } from "react-icons/fa";
 const Footer = () => {
   return (
 
-    <div className="w-full min-h-screen flex items-center justify-center bg-black">
+    <div className="pt-16 w-full min-h-screen flex items-center justify-center bg-black">
       <div className="md:w-2/3 w-full px-4 text-white flex flex-col">
         <div className="w-full text-7xl font-bold">
-          <h1 className="w-full md:w-2/3">How can we help you. get
-            in touch</h1>
+          <h1 className="w-full md:w-3/4">How can we help you? Get in touch</h1>
         </div>
         <div className="flex mt-8 flex-col md:flex-row md:justify-between">
-          <p className="w-full md:w-2/3 text-gray-400">To ensure that all Wikipedia content is verifiable, anyone may question an uncited claim. If your work has been tagged</p>
-          <div className="w-44 pt-6 md:pt-0">
-            <Link href="https://wa.me/918266882636" className="bg-green-500 justify-center text-center rounded-lg shadow px-10 py-3 flex items-center">
+          {/* <p className="w-full md:w-2/3 text-gray-400">To ensure that all Wikipedia content is verifiable, anyone may question an uncited claim. If your work has been tagged</p> */}
+          <div className="w-fit pt-6 md:pt-0">
+            <Link href="https://wa.me/918266882636" className="bg-green-500 justify-center text-center rounded-2xl shadow px-6 py-3 flex items-center contact-us-btn font-bold">
               <FaWhatsapp className="text-xl" /> &nbsp; Contact US
             </Link>
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="flex mt-24 ml-2 mb-12 flex-row justify-between">
+          <div className="flex mt-20 ml-2 mb-8 flex-row items-center justify-between">
             <div className="">
               <Link className="flex w-24 items-center" href="/">
                 <Image
@@ -32,17 +31,17 @@ const Footer = () => {
                 />
               </Link>
             </div>
-            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">About</a>
-            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Services</a>
-            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Why us</a>
-            <a className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Contact</a>
+            <Link href='/about' className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">About</Link>
+            <Link href='/plans' className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Plans & Pricing</Link>
+            <Link href='/' className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Why us</Link>
+            <Link href='/' className="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Contact</Link>
             <div className="flex flex-row space-x-8 items-center justify-between">
-              <a>
+              <a href="/">
                 <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3.89782 12V6.53514H5.67481L5.93895 4.39547H3.89782V3.03259C3.89782 2.41516 4.06363 1.99243 4.91774 1.99243H6V0.0847928C5.47342 0.0262443 4.94412 -0.00202566 4.41453 0.000112795C2.84383 0.000112795 1.76542 0.994936 1.76542 2.82122V4.39147H0V6.53114H1.76928V12H3.89782Z" fill="white" />
                 </svg>
               </a>
-              <a>
+              <a href="/">
                 <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.99536 2.91345C5.17815 2.91345 4.39441 3.23809 3.81655 3.81594C3.2387 4.3938 2.91406 5.17754 2.91406 5.99475C2.91406 6.81196 3.2387 7.5957 3.81655 8.17356C4.39441 8.75141 5.17815 9.07605 5.99536 9.07605C6.81257 9.07605 7.59631 8.75141 8.17417 8.17356C8.75202 7.5957 9.07666 6.81196 9.07666 5.99475C9.07666 5.17754 8.75202 4.3938 8.17417 3.81594C7.59631 3.23809 6.81257 2.91345 5.99536 2.91345ZM5.99536 7.99586C5.46446 7.99586 4.9553 7.78496 4.57989 7.40955C4.20448 7.03415 3.99358 6.52499 3.99358 5.99408C3.99358 5.46318 4.20448 4.95402 4.57989 4.57861C4.9553 4.20321 5.46446 3.99231 5.99536 3.99231C6.52626 3.99231 7.03542 4.20321 7.41083 4.57861C7.78624 4.95402 7.99714 5.46318 7.99714 5.99408C7.99714 6.52499 7.78624 7.03415 7.41083 7.40955C7.03542 7.78496 6.52626 7.99586 5.99536 7.99586Z" fill="white" />
                   <path d="M9.19863 3.51848C9.59537 3.51848 9.91698 3.19687 9.91698 2.80013C9.91698 2.4034 9.59537 2.08179 9.19863 2.08179C8.8019 2.08179 8.48029 2.4034 8.48029 2.80013C8.48029 3.19687 8.8019 3.51848 9.19863 3.51848Z" fill="white" />

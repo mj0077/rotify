@@ -1,78 +1,88 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import logo from "@/assets/images/logo.png";
-// import defaultProfile from '@/assets/images/profile.png';
-// import { useSession, signIn, signOut, getProviders } from "next-auth/react";
+import menu from "@/assets/images/menu.webp";
+import menuIcon from "@/assets/images/menu_icon.jpg";
+import closeIcon from "@/assets/images/close_icon.webp";
 import Image from "next/image";
 import Link from "next/link";
-// import { FaGoogle } from 'react-icons/fa';
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub, FaWhatsapp } from "react-icons/fa6";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [session, setSession] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const { data: session, status } = useSession();
-  // const providers = getProviders();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [session, setSession] = useState(false);
+  // const path = usePathname();
+  // const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
-  // console.log({session: session, status: status, providers: providers})
+  useGSAP(() => {
+    const tl = gsap.timeline({ paused: true });
+
+    // Menu button rotate animation
+    tl.to('.menu-button', {
+      rotateY: 90,
+      duration: .1,
+    }),
+    tl.from('.close-button', {
+      rotateY: -90,
+      duration: .1
+    })
+
+    const menuTL = gsap.timeline({paused: true});
+
+    // Nav menu entry animation (rev for exit)
+    menuTL.to('.nav-menu', {
+      x: '0',
+      ease: "power3.out",
+      duration: 0.3
+    })
+    menuTL.from('.nav-menu div a', {
+      opacity: 0,
+      x: '10%',
+      stagger: 0.075,
+      duration: 0.3,
+      delay: -0.05
+    })
+
+    // Nav menu background animation
+    gsap.to('.nav-menu', {
+      backgroundPositionY: '50%',
+      duration: 12,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    })
+
+    document.querySelector('.menu-button').addEventListener('click', () => {
+      tl.play();
+      menuTL.play();
+    })
+
+    document.querySelector('.close-button').addEventListener('click', () => {
+      tl.reverse();
+      menuTL.reverse();
+    })
+    Array.from(document.querySelectorAll('.nav-menu div a')).forEach( (elem) => elem.addEventListener('click', () => {
+      tl.reverse();
+      menuTL.reverse();
+    }))
+  })
+
+  // const onCLickHandler = (e) => {
+  //   console.log(e.target);
+  //   e.target.classList.toggle('opened');
+  //   e.target.setAttribute('aria-expanded', e.target.classList.contains('opened'));
+  // }
 
   return (
-    <div className="z-10 navbar mx-auto">
-      <nav className="bg-red-600/15 shadow-nav"> {/* "nav-bg" */}
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex flex-row h-20 items-center justify-content-between">
-
-            {/* <!-- Mobile menu button--> */}
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              <button
-                type="button"
-                className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              // onClick={(prev) => setIsMobileMenuOpen((prev) => !prev)}
-              >
-                <span className="absolute -inset-0.5"></span>
-                <span className="sr-only">Open main menu</span>
-                {/* <!-- Icon when menu is closed. Menu open: "hidden", Menu closed: "block"--> */}
-                <svg
-                  className="block h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-                {/* <!-- Icon when menu is open. Menu open: "block", Menu closed: "hidden"--> */}
-                <svg
-                  className="hidden h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+    <div className="z-10 navbar mx-auto rounded-[30px]">
+      <nav className="bg-gradient-to-b from-[#971303] to-[#FF000D] shadow-nav"> {/* "nav-bg" */}
+        <div className="mx-auto max-w-7xl md:px-2 lg:px-6">
+          <div className="relative flex h-16 items-center justify-content-between">
 
             {/* ROTIFY Logo */}
             <div className="basis-1/3">
-              <Link className="flex flex-shrink-0 items-center" href="/">
+              <Link className="flex items-center" href="/">
                 <Image
                   className="logo"
                   src={logo}
@@ -82,42 +92,76 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Navbar Navigation Links */}
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end  basis-1/4">
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                  {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
+            {/* Navbar Menu + Navigation Links */}
+            <div className="nav-menu absolute top-0 -mt-[53px] right-0 -mr-[122px] h-[100vh] w-[45vw] items-center justify-center sm:items-stretch sm:justify-end basis-1/4">
+              <div className="sm:ml-6 h-full flex items-center">
+                <div className="flex flex-col space-x-4">
                   <Link
                     href="/"
-                    className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="hover:text-white ml-3.5 rounded-md px-3 py-1"
                     aria-current="page"
                   >
                     Home
                   </Link>
+                  <Link
+                    href="/about"
+                    className="hover:text-white rounded-md px-3 py-1"
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    href="/plans"
+                    className="hover:text-white rounded-md px-3 py-1"
+                  >
+                    Plans & Pricing
+                  </Link>
+                  <Link
+                    href="https://wa.me/918266882636"
+                    className="hover:text-white rounded-md px-3 py-1"
+                  >
+                    Contact Us
+                  </Link>
                   {/* <Link
                     href="/schedule"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    className="hover:text-white rounded-md px-3 py-1"
                   >
                     Schedule Meal
                   </Link> */}
-                  <Link
-                    href="/plans"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    Plans and Pricing
-                  </Link>
-                  {session && (
+                  {/* {session && (
                     <Link
                       href="/kitchen/add-meal"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                      className="text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                     >
                       Add Meal
                     </Link>
-                  )}
+                  )} */}
                 </div>
               </div>
+              <span className="absolute bottom-10 right-24 text-[20px]">ROTIFY</span>
             </div>
 
+            {/* <!-- Mobile menu button--> */}
+            <div className="absolute -right-7 inset-y-0 flex items-center menu-btn-wrapper">
+              <Image src={menu} alt="menu button" width="110" className="absolute menu-btn" />
+
+              <button type="button" className="relative scale-[60%] menu" aria-label="Main Menu">
+                  <Image src={menuIcon}
+                    alt="hamburger menu icon"
+                    width="100"
+                    className="rounded-full menu-button absolute"
+                    onClick={() => {
+                      setTimeout(() => {
+                        setIsMenuOpen(true);
+                      }, 200);
+                    }} />
+
+                    <Image src={closeIcon}
+                      alt="hamburger close icon"
+                      width="100"
+                      className="close-button"
+                      onClick={() => setIsMenuOpen(false)} />
+              </button>
+            </div>
 
             {/* <!-- Right Side Menu (Logged Out) --> */}
             {/* {!session && (
@@ -139,10 +183,10 @@ const Navbar = () => {
             )} */}
 
             {/* <!-- Right Side Menu (Logged In) --> */}
-            {session && (
+            {/* {session && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 basis-1/4">
                 <span className="text-gray-200 px-2 mr-2 block">
-                  Welcome, user {/*<b>{session.user.name}</b>*/}
+                  Welcome, user session.user.name
                 </span>
                 <button
                   type="button"
@@ -165,8 +209,7 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-
-                {/* <!-- Profile dropdown --> */}
+                
                 <div className="relative ml-3">
                   <div>
                     <button
@@ -177,7 +220,6 @@ const Navbar = () => {
                       aria-haspopup="true"
                       onClick={() => setIsProfileMenuOpen((prev) => !prev)}
                     >
-                      {/* onClick={() => setIsProfileMenuOpen((prev) => !prev)}> */}
                       <span className="absolute -inset-1.5"></span>
                       <span className="sr-only">Open user menu</span>
                       <Image
@@ -190,15 +232,6 @@ const Navbar = () => {
                       />
                     </button>
                   </div>
-
-                  {/* <!-- Profile Dropdown menu, show/hide based on menu state.
-
-                                Entering: "transition ease-out duration-100"
-                                From: "transform opacity-0 scale-95"
-                                To: "transform opacity-100 scale-100"
-                                Leaving: "transition ease-in duration-75"
-                                From: "transform opacity-100 scale-100"
-                                To: "transform opacity-0 scale-95" --> */}
 
                   {isProfileMenuOpen && (
                     <div
@@ -243,15 +276,14 @@ const Navbar = () => {
                   )}
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
 
         {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-        {isMobileMenuOpen && (
+        {/* {isMobileMenuOpen && (
           <div id="mobile-menu">
             <div className="px-4 pb-3 pt-2">
-              {/* Home Link */}
               <Link
                 href="/"
                 className="text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base"
@@ -260,15 +292,6 @@ const Navbar = () => {
                 Home
               </Link>
 
-              {/* Schedule Link */}
-              {/* <Link
-                href="/schedule"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-              >
-                Schedule Meal
-              </Link><br/> */}
-
-              {/* Plans Link */}
               <Link
                 href="/plans"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md mb-3 px-3 py-2 text-base"
@@ -276,7 +299,6 @@ const Navbar = () => {
                 Plans and Pricing
               </Link>
 
-              {/* Contact Us Link */}
               <span
                 href="https://wa.me/918266882636"
                 className="bg-green-600 text-white rounded-lg px-3 py-2 mb-3 font-medium hover:bg-gray-700 flex w-44"
@@ -292,19 +314,9 @@ const Navbar = () => {
                   Add Meal
                 </Link>
               )}
-              {/* <button
-                onClick={() => {
-                  // signIn(providers);
-                  setSession(true);
-                }}
-                className="flex items-center text-white bg-gray-900 hover:bg-gray-700 hover:text-white rounded-md px-5 py-2"
-              >
-                <FcGoogle className="text-white mr-2 text-xl" />
-                <span>Login or Register</span>
-              </button> */}
             </div>
           </div>
-        )}
+        )} */}
       </nav>
     </div>
   );
