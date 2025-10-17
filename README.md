@@ -1,27 +1,62 @@
 ├── .eslintrc.json
 ├── .gitignore
-├── PlanDetails.js
+├── .vscode
+    └── settings.json
+├── Meals.js
 ├── README.md
 ├── app
+    ├── LoadingWrapper.jsx
+    ├── about
+    │   └── page.jsx
+    ├── api
+    │   └── submit
+    │   │   └── route.js
     ├── icon.jpeg
     ├── layout.jsx
+    ├── loading.jsx
     ├── page.jsx
     └── plans
     │   └── page.jsx
 ├── assets
+    ├── fonts
+    │   ├── 29lt-zawi-regular.otf
+    │   ├── Batangas Bold 700.otf
+    │   ├── NeueMachina-Regular.otf
+    │   └── NeueMachina-Ultrabold.otf
     ├── images
+    │   ├── Close.jsx
+    │   ├── about.avif
     │   ├── calendar.png
+    │   ├── checkmark.gif
+    │   ├── close_icon.webp
     │   ├── delivery.jpg
-    │   ├── footer-logo.png
+    │   ├── footer-logo.jpeg
     │   ├── fresh.jpg
-    │   ├── hero-bg.jpg
+    │   ├── hero-bg2.avif
     │   ├── hero-bg2.jpg
     │   ├── kitchen.jpg
     │   ├── logo.png
     │   ├── meals.jpg
+    │   ├── menu-bg.webp
+    │   ├── menu.webp
+    │   ├── menu_icon.jpg
+    │   ├── menu_icon.webp
+    │   ├── morning.avif
+    │   ├── morning.jpg
+    │   ├── navneet.png
+    │   ├── night.avif
+    │   ├── noon.jpg
+    │   ├── noon.webp
+    │   ├── plans-bg.jpg
     │   ├── plate.jpg
-    │   ├── veggies.webp
-    │   └── wa.png
+    │   ├── rotify.avif
+    │   ├── schedule-card.avif
+    │   ├── suraj.png
+    │   ├── veggies.avif
+    │   ├── wa.png
+    │   └── whatsapp-card.avif
+    ├── schema
+    │   └── formSchema.ts
     └── styles
     │   └── globals.css
 ├── components
@@ -30,10 +65,11 @@
     ├── Hero.jsx
     ├── InfoBoxes.jsx
     ├── Map.jsx
+    ├── MealCard.jsx
     ├── Navbar.jsx
-    ├── PlanCard.jsx
     ├── Review.jsx
     ├── ReviewsSection.jsx
+    ├── ScheduleModal.jsx
     └── SearchForm.jsx
 ├── jsconfig.json
 ├── next.config.mjs
