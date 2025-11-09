@@ -26,7 +26,7 @@ const InfoBoxes = ({ onOpen }) => {
   return (
 
     <>
-      <div className="infoboxes-wrapper sm:w-4/5 lg:w-3/4 lg:container-sm relative sm:left-[17%] lg:left-[20%] sm:mt-3">
+      <div className="infoboxes-wrapper sm:w-4/5 md:w-[85%] lg:w-3/4 lg:container-sm relative sm:left-[17%] md:left-[9%] lg:left-[20%] sm:mt-3 md:mt-10 lg:mt-3">
         <div className="flex flex-col lg:flex-row justify-between gap-4 p-4 px-8 rounded-lg text-[#FCDF59] ">
 
           <Link href="https://wa.me/918266882636" className="md:overflow-hidden rounded-xl">

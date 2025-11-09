@@ -28,19 +28,19 @@ const FeaturesPage = () => {
                         </div>
                         <div className="flex flex-col md:flex-row px-2 md:px-6 md:pt-18 dark:text-white mt-8">
                             <div className="w-full md:w-1/2 border-b-1 text-gray-500 border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r md:border-gray-200 items-center text-center px-8 py-5 flex flex-col">
-                                <Image src={meals} className="rounded-full h-32 w-32" alt="" title="" />
+                                <Image src={meals} className="rounded-full h-32 w-32" alt="Choose Your meal plan" title="Choose your meal plan" placeholder="blur"/>
                                 <h1 className="my-8 font-semibold text-yellow-300 dark:text-white text-2xl">Choose Your Meal Plan</h1>
                                 {/* <h2 className="mt-1 mb-4 text-yellow-100 dark:text-gray-400 font-thin text-xl">Components</h2> */}
                                 <p className="leading-7 font-base md:font-thin text-yellow-100 mb-12 md:!mb-0">Select from our variety of meal plans that suit your dietary preferences and requirements.</p>
                             </div>
                             <div className="w-full mt-8 md:!mt-0 md:w-1/2 border-b-1 text-gray-500 border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r md:border-gray-200 items-center text-center px-8 py-5 flex flex-col">
-                                <Image src={fresh} className="rounded-full h-32 w-32" alt="" title="" />
+                                <Image src={fresh} className="rounded-full h-32 w-32" alt="We cook fresh daily" title="We Cook Fresh Daily" placeholder="blur"/>
                                 <h1 className="my-8 font-semibold text-yellow-300 dark:text-white text-2xl">We Cook Fresh Daily</h1>
                                 {/* <h2 className="mt-1 mb-4 text-yellow-100 dark:text-gray-400 font-thin text-xl">Elements</h2> */}
                                 <p className="leading-7 font-base md:font-thin text-yellow-100 mb-12 md:!mb-0">Our chefs prepare your meals with fresh ingredients and authentic recipes every day.</p>
                             </div>
                             <div className="w-full mt-8 md:!mt-0 md:w-1/2 border-b-1 text-gray-500 border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-gray-200 items-center text-center px-8 py-5 flex flex-col">
-                                <Image src={delivery} className="rounded-full h-32 w-32" alt="delivery" title="" />
+                                <Image src={delivery} className="rounded-full h-32 w-32" alt="Enjoy Doorstep Delivery" title="Enjoy Doorstep Delivery" placeholder="blur"/>
                                 <h1 className="my-8 font-semibold text-yellow-300 dark:text-white text-2xl">Enjoy Doorstep Delivery</h1>
                                 {/* <h2 className="mt-1 mb-4 text-yellow-100 dark:text-gray-400 font-thin text-xl">Components</h2> */}
                                 <p className="leading-7 font-base md:font-thin text-yellow-100 mb-12 md:!mb-0">Get your hot, delicious tiffin delivered right to your home or office on time.</p>

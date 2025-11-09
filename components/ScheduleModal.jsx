@@ -80,7 +80,7 @@ const ScheduleModal = ({ isOpen, onClose }) => {
                     const data = await res.json();
 
                     if (data.ok) {
-                        console.log(data)
+                        // console.log(data)
                         setOrderSubmitted(true);
                         setForm({
                             name: "",
@@ -93,7 +93,7 @@ const ScheduleModal = ({ isOpen, onClose }) => {
                         });
                         setStatus("Success");
                         setErrors({});
-                        console.log(status);
+                        // console.log(status);
                     } else {
                         console.log(data);
                     }
@@ -116,7 +116,7 @@ const ScheduleModal = ({ isOpen, onClose }) => {
     return !isOpen ? null :
         (
             <>
-                <div className="schedule-modal-wrapper absolute bg-grey-900 w-full mx-auto">
+                <div className="schedule-modal-wrapper bg-grey-900 w-full mx-auto">
                     <div className="z-50 w-full max-w-md">
                         <span className="close-modal-btn" onClick={() => onClose()}>
                             <svg width="48" height="48" viewBox="0 0 48 48">
@@ -172,7 +172,7 @@ const ScheduleModal = ({ isOpen, onClose }) => {
                                     </div>
 
                                     {/* Date Range Fields */}
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="space-y-2">
                                             <label htmlFor="startDate" className="text-white/90 text-sm font-medium">
                                                 Start Date

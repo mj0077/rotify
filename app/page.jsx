@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="schedule-modal">
+      <div id="schedule-modal">
         <ScheduleModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)}/>
       </div>
 

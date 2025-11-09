@@ -18,21 +18,21 @@ const Navbar = () => {
   useGSAP(() => {
     const tl = gsap.timeline({ paused: true });
 
-    // Menu button rotate animation
+    // Menu button rotate animation ON CLICK
     tl.to('.menu-button', {
       rotateY: 90,
       duration: .1,
     }),
-    tl.from('.close-button', {
-      rotateY: -90,
-      duration: .1
-    })
+      tl.from('.close-button', {
+        rotateY: -90,
+        duration: .1
+      })
 
-    const menuTL = gsap.timeline({paused: true});
+    // Nav menu entry animation timeline (rev for exit)
+    const menuTL = gsap.timeline({ paused: true });
 
-    // Nav menu entry animation (rev for exit)
     menuTL.to('.nav-menu', {
-      x: '0',
+      translateX: '0',
       ease: "power3.out",
       duration: 0.3
     })
@@ -45,24 +45,33 @@ const Navbar = () => {
     })
 
     // Nav menu background animation
-    gsap.to('.nav-menu', {
+    const menuAnimate = gsap.to('.nav-menu', {
       backgroundPositionY: '50%',
       duration: 12,
       repeat: -1,
       yoyo: true,
-      ease: "power1.inOut"
+      ease: "power1.inOut",
+      paused: true
     })
+
+    const navMenu = document.querySelector('.nav-menu');
 
     document.querySelector('.menu-button').addEventListener('click', () => {
       tl.play();
       menuTL.play();
+      menuAnimate.play();
+      // setTimeout(() => { navMenu.classList.add('opened') }, 300);
+      navMenu.classList.add('opened');
+      navMenu.style.display = 'block';
     })
 
     document.querySelector('.close-button').addEventListener('click', () => {
       tl.reverse();
       menuTL.reverse();
+      menuAnimate.pause();
+      setTimeout(() => { navMenu.classList.remove('opened') }, 700);
     })
-    Array.from(document.querySelectorAll('.nav-menu div a')).forEach( (elem) => elem.addEventListener('click', () => {
+    Array.from(document.querySelectorAll('.nav-menu div a')).forEach((elem) => elem.addEventListener('click', () => {
       tl.reverse();
       menuTL.reverse();
     }))
@@ -75,59 +84,43 @@ const Navbar = () => {
   // }
 
   return (
-    <div className="z-10 navbar mx-auto rounded-[30px]">
-      <nav className="bg-gradient-to-b from-[#971303] to-[#FF000D] shadow-nav"> {/* "nav-bg" */}
-        <div className="mx-auto max-w-7xl md:px-2 lg:px-6">
-          <div className="relative flex h-16 items-center justify-content-between">
-
-            {/* ROTIFY Logo */}
-            <div className="basis-1/3">
-              <Link className="flex items-center" href="/">
-                <Image
-                  className="logo"
-                  src={logo}
-                  alt="ROTIFY logo"
-                  priority
-                />
-              </Link>
-            </div>
-
-            {/* Navbar Menu + Navigation Links */}
-            <div className="nav-menu absolute top-0 -mt-[53px] right-0 -mr-[122px] h-[100vh] w-[45vw] items-center justify-center sm:items-stretch sm:justify-end basis-1/4">
-              <div className="sm:ml-6 h-full flex items-center">
-                <div className="flex flex-col space-x-4">
-                  <Link
-                    href="/"
-                    className="hover:text-white ml-3.5 rounded-md px-3 py-1"
-                    aria-current="page"
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="/about"
-                    className="hover:text-white rounded-md px-3 py-1"
-                  >
-                    About Us
-                  </Link>
-                  <Link
-                    href="/plans"
-                    className="hover:text-white rounded-md px-3 py-1"
-                  >
-                    Plans & Pricing
-                  </Link>
-                  <Link
-                    href="https://wa.me/918266882636"
-                    className="hover:text-white rounded-md px-3 py-1"
-                  >
-                    Contact Us
-                  </Link>
-                  {/* <Link
+    <>
+      {/* Navbar Menu + Navigation Links */}
+      <div className="z-20 nav-menu absolute top-0 right-0 h-full w-[98.5vw] md:w-[65vw] lg:w-[45vw] items-start justify-start sm:items-stretch sm:justify-end ">
+        <div className="sm:ml-6 h-full flex items-center">
+          <div className="flex flex-col space-x-4">
+            <Link
+              href="/"
+              className="hover:text-white ml-3.5 rounded-md px-3 py-1"
+              aria-current="page"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="hover:text-white rounded-md px-3 py-1"
+            >
+              About Us
+            </Link>
+            <Link
+              href="/plans"
+              className="hover:text-white rounded-md px-3 py-1"
+            >
+              Plans & Pricing
+            </Link>
+            <Link
+              href="https://wa.me/918266882636"
+              className="hover:text-white rounded-md px-3 py-1"
+            >
+              Contact Us
+            </Link>
+            {/* <Link
                     href="/schedule"
                     className="hover:text-white rounded-md px-3 py-1"
                   >
                     Schedule Meal
                   </Link> */}
-                  {/* {session && (
+            {/* {session && (
                     <Link
                       href="/kitchen/add-meal"
                       className="text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -135,36 +128,56 @@ const Navbar = () => {
                       Add Meal
                     </Link>
                   )} */}
-                </div>
+          </div>
+        </div>
+        <span className="absolute bottom-10 right-24 text-[20px]">ROTIFY</span>
+      </div>
+
+      {/* <!-- Mobile menu button (Hamburger icon)--> */}
+      <div className="z-30 absolute top-9 right-24 flex items-center menu-btn-wrapper">
+        <Image src={menu} alt="menu button" width="110" className="absolute menu-btn" />
+
+        <button type="button" className="relative scale-[60%] menu" aria-label="Main Menu">
+          <Image src={menuIcon}
+            alt="hamburger menu icon"
+            width="100"
+            className="rounded-full menu-button absolute"
+            onClick={() => {
+              setTimeout(() => {
+                setIsMenuOpen(true);
+              }, 200);
+            }} />
+
+          <Image src={closeIcon}
+            alt="hamburger close icon"
+            width="100"
+            className="close-button"
+            onClick={() => setIsMenuOpen(false)} />
+        </button>
+      </div>
+
+      {/* MAIN NAV */}
+      <div className="z-10 relative navbar mx-auto rounded-[30px]">
+        <nav className="bg-gradient-to-b from-[#971303] to-[#FF000D] shadow-nav"> {/* "nav-bg" */}
+          <div className="mx-auto max-w-7xl md:px-2 lg:px-6">
+            <div className="relative flex h-16 items-center justify-content-between">
+
+              {/* ROTIFY Logo */}
+              <div className="basis-1/3">
+                <Link className="flex items-center" href="/">
+                  <Image
+                    className="logo"
+                    src={logo}
+                    alt="ROTIFY logo"
+                    priority
+                  />
+                </Link>
               </div>
-              <span className="absolute bottom-10 right-24 text-[20px]">ROTIFY</span>
-            </div>
 
-            {/* <!-- Mobile menu button--> */}
-            <div className="absolute -right-7 inset-y-0 flex items-center menu-btn-wrapper">
-              <Image src={menu} alt="menu button" width="110" className="absolute menu-btn" />
 
-              <button type="button" className="relative scale-[60%] menu" aria-label="Main Menu">
-                  <Image src={menuIcon}
-                    alt="hamburger menu icon"
-                    width="100"
-                    className="rounded-full menu-button absolute"
-                    onClick={() => {
-                      setTimeout(() => {
-                        setIsMenuOpen(true);
-                      }, 200);
-                    }} />
 
-                    <Image src={closeIcon}
-                      alt="hamburger close icon"
-                      width="100"
-                      className="close-button"
-                      onClick={() => setIsMenuOpen(false)} />
-              </button>
-            </div>
-
-            {/* <!-- Right Side Menu (Logged Out) --> */}
-            {/* {!session && (
+              {/* <!-- Right Side Menu (Logged Out) --> */}
+              {/* {!session && (
               <div className="hidden md:block md:ml-6 basis-1/4">
                 <div className="flex items-center">
                   <button
@@ -182,8 +195,8 @@ const Navbar = () => {
               </div>
             )} */}
 
-            {/* <!-- Right Side Menu (Logged In) --> */}
-            {/* {session && (
+              {/* <!-- Right Side Menu (Logged In) --> */}
+              {/* {session && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 basis-1/4">
                 <span className="text-gray-200 px-2 mr-2 block">
                   Welcome, user session.user.name
@@ -277,11 +290,11 @@ const Navbar = () => {
                 </div>
               </div>
             )} */}
+            </div>
           </div>
-        </div>
 
-        {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-        {/* {isMobileMenuOpen && (
+          {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+          {/* {isMobileMenuOpen && (
           <div id="mobile-menu">
             <div className="px-4 pb-3 pt-2">
               <Link
@@ -317,8 +330,9 @@ const Navbar = () => {
             </div>
           </div>
         )} */}
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </>
   );
 };
 

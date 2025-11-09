@@ -13,6 +13,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta
+          property="title"
+          content="Rotify App"
+        />
+        <meta
           name="description"
           content="Best Homemade tiffin service in Meerut | ROTIFY"
           key="desc"
@@ -27,6 +31,7 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:image" content={rotify} />
       </head>
+      <title>Rotify (formerly Public Tiffin Box)</title>
       <body>
         <LoadingWrapper>
           <Navbar />
