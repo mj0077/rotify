@@ -7,7 +7,7 @@ import closeIcon from "@/assets/images/close_icon.webp";
 import Image from "next/image";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import gsap from "gsap/dist/gsap";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:image" content={rotify} />
       </head>
-      <title>Rotify (formerly Public Tiffin Box)</title>
+      <title>ROTIFY</title>
       <body>
         <LoadingWrapper>
           <Navbar />
