@@ -10,29 +10,33 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@prisma/client": "^5.22.0",
     "@radix-ui/react-progress": "^1.1.7",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "dotenv": "^16.5.0",
-    "google-spreadsheet": "^5.0.2",
-    "googleapis": "^156.0.0",
+    "framer-motion": "^12.38.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.545.0",
-    "motion": "^12.23.12",
-    "next": "^14.2.26",
+    "next": "^15.5.15",
     "next-auth": "^4.24.7",
-    "react": "^18",
-    "react-dom": "^18",
+    "prisma": "^5.22.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-icons": "^5.0.1",
+    "sharp": "^0.34.5",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.0.17"
   },
   "devDependencies": {
-    "@types/node": "24.2.1",
-    "@types/react": "19.1.10",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "eslint-config-next": "^15.5.15",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.0",
+    "typescript": "^6.0.3"
   }
 }

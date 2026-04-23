@@ -17,3 +17,9 @@ export const FormSchema = z.object({
   lunch: z.boolean(),
   dinner: z.boolean(),
 });
+
+export const WaitlistSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters long." }),
+  phNumber: z.string().regex(/^\d{10}$/, { message: "Phone Number must be exactly 10 digits." }),
+  address: z.string().min(10, { message: "Please provide a complete address (at least 10 characters)." }),
+});

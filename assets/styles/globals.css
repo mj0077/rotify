@@ -110,6 +110,18 @@ html {
   }
 }
 
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .tagline {
   color: #f8f580;
 }
@@ -402,21 +414,14 @@ section {
 
 /* MAIN HOME PAGE */
 
-.hero-background {
-  position: relative;
-  overflow: hidden;
-  height: fit-content;
-  /* backdrop-filter: blur(0.5px) contrast(0.75) brightness(1.25); */
+/* Enhanced Hero Styles - Taste Skill */
+.hero-gradient-overlay {
+  background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
 }
 
-.hero-background h1 {
-  filter: drop-shadow(4px 4px 3px #000);
-  line-height: 4rem;
-}
-
-.hero-background p {
-  font-family: "29LT", "serif";
-  text-transform: uppercase;
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
 
 .wrapper {
