@@ -16,19 +16,26 @@ export const authOptions: AuthOptions = {
           return null;
         }
 
+        console.log(`[NextAuth] Login attempt for user: "${credentials.username}"`);
+        
         const admin = await prisma.admin.findUnique({
           where: { username: credentials.username },
         });
 
         if (!admin) {
+          console.log(`[NextAuth] Admin user NOT found: "${credentials.username}"`);
           return null;
         }
 
+        console.log(`[NextAuth] User found. Comparing passwords...`);
         const isValid = await bcrypt.compare(credentials.password, admin.password);
 
         if (!isValid) {
+          console.log(`[NextAuth] Password MISMATCH for user: "${credentials.username}"`);
           return null;
         }
+
+        console.log(`[NextAuth] Login SUCCESS for user: "${credentials.username}"`);
 
         return {
           id: String(admin.id),
