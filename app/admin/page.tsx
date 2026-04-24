@@ -17,6 +17,7 @@ import {
   CalendarDays,
   Users,
 } from "lucide-react";
+import type { DashboardData, Order, WaitlistEntry } from "@/types/order";
 
 const statusColors: Record<string, string> = {
   PENDING: "bg-amber-500/20 text-amber-400 border-amber-500/30",
@@ -26,7 +27,12 @@ const statusColors: Record<string, string> = {
   CANCELLED: "bg-red-500/20 text-red-400 border-red-500/30",
 };
 
-interface StatCardProps { label: string; value: string | number; icon: any; color: string; }
+interface StatCardProps {
+  label: string;
+  value: string | number;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
 
 const StatCard = ({ label, value, icon: Icon, color }: StatCardProps) => (
   <div className="relative p-[1px] rounded-xl bg-gradient-to-br from-white/10 to-white/5">
@@ -54,8 +60,8 @@ const StatCard = ({ label, value, icon: Icon, color }: StatCardProps) => (
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [stats, setStats] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [stats, setStats] = useState<DashboardData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -233,7 +239,7 @@ export default function AdminDashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        {stats.recentOrders.map((order: any) => (
+                        {stats.recentOrders.map((order: Order) => (
                           <tr
                             key={order.id}
                             className="border-b border-white/5 hover:bg-white/5 transition-colors duration-200"
@@ -315,7 +321,7 @@ export default function AdminDashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        {stats.recentWaitlist?.map((entry: any) => (
+                        {stats.recentWaitlist?.map((entry: WaitlistEntry) => (
                           <tr
                             key={entry.id}
                             className="border-b border-white/5 hover:bg-white/5 transition-colors duration-200"

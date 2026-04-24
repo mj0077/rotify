@@ -17,7 +17,7 @@ const navLinks = [
 
 // Spring configuration for premium feel
 const springConfig = {
-  type: "spring" as any,
+  type: "spring" as const,
   stiffness: 100,
   damping: 20,
 };
@@ -46,7 +46,7 @@ const itemVariants = {
     y: 30,
     transition: {
       duration: 0.3,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
   open: {
@@ -54,7 +54,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };
@@ -105,7 +105,9 @@ const MagneticButton = ({ children, className, onClick }: MagneticButtonProps) =
 };
 
 const Navbar = () => {
-  const { setIsModalOpen } = useContext(ModalContext) as any;
+  const context = useContext(ModalContext);
+if (!context) throw new Error('useContext must be used within a ModalProvider');
+const { setIsModalOpen } = context;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef(null);
@@ -149,7 +151,7 @@ const Navbar = () => {
         className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [, , , ] as any }}
+        transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] as const }}
       >
         <nav
           className={`

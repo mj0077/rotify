@@ -78,7 +78,7 @@ export default function AdminOrdersPage() {
       });
       if (res.ok) {
         setOrders((prev) =>
-          prev.map((o: any) => (o.id === orderId ? { ...o, status: newStatus } : o))
+          prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o))
         );
       }
     } catch (e) {

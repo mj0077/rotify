@@ -24,14 +24,14 @@ export default function WaitlistPage() {
     validateData(form);
   };
 
-  const validateData = (formData: any) => {
+  const validateData = (formData: { name: string; phNumber: string; address: string }) => {
     const validation = WaitlistSchema.safeParse(formData);
     if (validation.success) {
       setErrors({});
     } else {
       const errObj: Record<string, string> = {};
-      validation.error.issues.forEach((err: any) => {
-        errObj[err.path[0]] = err.message;
+      validation.error.issues.forEach((err) => {
+        errObj[err.path[0] as string] = err.message;
       });
       setErrors(errObj);
     }

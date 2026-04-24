@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import navneetImg from '@/assets/images/navneet.png';
 import surajImg from '@/assets/images/suraj.png';
 
@@ -22,7 +22,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };
@@ -45,7 +45,13 @@ const reviews = [
   },
 ];
 
-const ReviewCard = ({ review }: { review: any }) => (
+interface Review {
+  text: string;
+  name: string;
+  image: string | StaticImageData | null;
+}
+
+const ReviewCard = ({ review }: { review: Review }) => (
   <div className="group relative overflow-hidden rounded-2xl bg-black/40 backdrop-blur-xl border border-[#FCDF59]/10 p-6 sm:p-8 flex flex-col h-full transition-all duration-500 hover:border-[#FCDF59]/30 hover:bg-black/50">
     {/* Gradient hover overlay */}
     <div className="absolute inset-0 bg-gradient-to-br from-[#FCDF59]/5 to-[#971303]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -38,7 +38,7 @@ const modalVariants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.4,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
   exit: {
@@ -69,7 +69,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.4,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };
@@ -78,7 +78,7 @@ interface CheckboxProps {
   checked: boolean;
   onChange: () => void;
   label: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 // Custom checkbox component
@@ -148,7 +148,7 @@ const AnimatedCheckbox = ({ checked, onChange, label, icon: Icon }: CheckboxProp
 
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   error?: string;
   touched?: boolean;
 }
@@ -296,7 +296,7 @@ const SuccessState = ({ onClose }: { onClose: () => void }) => {
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: [, , , ] as any }}
+      transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] as const }}
       className="text-center py-8"
     >
       {/* Animated checkmark */}
@@ -428,7 +428,7 @@ const ScheduleModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
     validateData(form);
   };
 
-  const validateData = (formData: any) => {
+  const validateData = (formData: typeof form) => {
     const validation = FormSchema.safeParse(formData);
     if (validation.success) {
       setErrors({});
@@ -442,7 +442,7 @@ const ScheduleModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
   };
 
   // Parse error response from backend into a user-friendly message
-  const parseErrorResponse = (data: any, statusCode: number) => {
+  const parseErrorResponse = (data: Record<string, any> | null, statusCode: number) => {
     if (statusCode === 429) {
       return "Too many requests. Please wait a minute and try again.";
     }

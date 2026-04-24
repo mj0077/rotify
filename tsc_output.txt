@@ -1,0 +1,36 @@
+app/waitlist/page.tsx(34,16): error TS2538: Type 'symbol' cannot be used as an index type.
+components/Features.tsx(138,13): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { className?: string | undefined; }, context?: any): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ className: string; style: { color: string; }; }' is not assignable to type 'IntrinsicAttributes & { className?: string | undefined; }'.
+      Property 'style' does not exist on type 'IntrinsicAttributes & { className?: string | undefined; }'.
+  Overload 2 of 2, '(props: { className?: string | undefined; }): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ className: string; style: { color: string; }; }' is not assignable to type 'IntrinsicAttributes & { className?: string | undefined; }'.
+      Property 'style' does not exist on type 'IntrinsicAttributes & { className?: string | undefined; }'.
+components/Features.tsx(310,20): error TS2322: Type '{ number: string; title: string; description: string; icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; image: StaticImageData; gradient: { ...; }; align: string; }' is not assignable to type '{ title: string; description: string; icon: ComponentType<{ className?: string | undefined; }>; image: string; gradient: { colors: string[]; }; number: string; align?: string | undefined; }'.
+  Types of property 'image' are incompatible.
+    Type 'StaticImageData' is not assignable to type 'string'.
+components/InfoBoxes.tsx(27,31): error TS2339: Property 'getBoundingClientRect' does not exist on type 'never'.
+components/Navbar.tsx(100,7): error TS2322: Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+  Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+    Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+components/Navbar.tsx(170,15): error TS2322: Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+  Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+    Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+components/Navbar.tsx(243,21): error TS2322: Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+  Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+    Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+components/Navbar.tsx(261,21): error TS2322: Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+  Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+    Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+components/ReviewsSection.tsx(157,25): error TS2322: Type '{ text: string; name: string; image: StaticImageData; } | { text: string; name: string; image: null; }' is not assignable to type 'Review'.
+  Type '{ text: string; name: string; image: StaticImageData; }' is not assignable to type 'Review'.
+    Types of property 'image' are incompatible.
+      Type 'StaticImageData' is not assignable to type 'string'.

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { UtensilsCrossed, ChefHat, Bike, ArrowUpRight } from "lucide-react";
 import meals from "@/assets/images/meals.jpg";
@@ -34,7 +34,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };
@@ -71,7 +71,15 @@ const StepContent = ({
   gradient,
   number,
   align = "left",
-}: any) => {
+}: {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  image: string | StaticImageData;
+  gradient: { colors: string[] };
+  number: string;
+  align?: string;
+}) => {
   const isLeft = align === "left";
 
   return (

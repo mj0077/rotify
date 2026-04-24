@@ -46,15 +46,15 @@ export const authOptions: AuthOptions = {
     signIn: '/admin/login',
   },
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }) {
       if (user) {
         token.username = user.username;
       }
       return token;
     },
-    async session({ session, token }: any) {
-      if (token) {
-        session.user.username = token.username;
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.username = token.username as string;
       }
       return session;
     },

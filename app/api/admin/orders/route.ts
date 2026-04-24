@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 // GET /api/admin/orders — List orders with filtering & pagination
 export async function GET(req: NextRequest) {
@@ -16,7 +17,7 @@ export async function GET(req: NextRequest) {
   const limit = parseInt(searchParams.get("limit") || "20", 10);
   const search = searchParams.get("search") || "";
 
-  const where: any = {};
+  const where: Prisma.OrderWhereInput = {};
 
   if (status && status !== "ALL") {
     where.status = status;
@@ -75,7 +76,7 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: "Invalid status" }, { status: 400 });
     }
 
-    const updateData: any = {};
+    const updateData: Prisma.OrderUpdateInput = {};
     if (status) updateData.status = status;
     if (notes !== undefined) updateData.notes = notes;
 

@@ -1,7 +1,7 @@
 const Close = () => {
 	return (
 		<svg version="1.1" id="Capa_1" x="0px" y="0px"
-			viewBox="0 0 2122 2122" style={{ enableBackground: "new 0 0 2122 2122" } as any} // enableBackground: "new 0 0 2122 2122" }} xmlSpace="preserve">
+			viewBox="0 0 2122 2122" xmlSpace="preserve">
 			<g>
 				<circle style={{ fill: '#E6302E' }} cx="1060.657" cy="1060.66" r="853.118" />
 				<g>

@@ -16,15 +16,15 @@ const springConfig = {
 
 // Magnetic card component
 const MagneticCard = ({ children, className }: { children: React.ReactNode, className?: string }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e: any) => {
-    const rect = (ref.current as any)?.getBoundingClientRect();
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -77,13 +77,15 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.7,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };
 
 const InfoBoxes = ({ onOpen }: { onOpen?: () => void }) => {
-  const { setIsModalOpen } = useContext(ModalContext) as any;
+  const context = useContext(ModalContext);
+  if (!context) throw new Error('useContext must be used within a ModalProvider');
+  const { setIsModalOpen } = context;
 
   return (
     <motion.div

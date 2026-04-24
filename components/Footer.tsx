@@ -80,7 +80,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [, , , ] as any,
+      ease: [0.32, 0.72, 0, 1] as const,
     },
   },
 };

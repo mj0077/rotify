@@ -13,7 +13,9 @@ import dinner from "@/assets/images/night.avif";
 import thali from "@/assets/images/thali.webp";
 
 const Hero = () => {
-  const { setIsModalOpen } = useContext(ModalContext) as any;
+  const context = useContext(ModalContext);
+  if (!context) throw new Error('useContext must be used within a ModalProvider');
+  const { setIsModalOpen } = context;
   const containerRef = useRef(null);
   const eyebrowRef = useRef(null);
   const headlineRef = useRef(null);
@@ -102,7 +104,7 @@ const Hero = () => {
   }, []);
 
   // Magnetic button effect
-  const handleMouseMove = (e: any) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -116,7 +118,7 @@ const Hero = () => {
     });
   };
 
-  const handleMouseLeave = (e: any) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     gsap.to(e.currentTarget, {
       x: 0,
       y: 0,

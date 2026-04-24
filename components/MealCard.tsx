@@ -109,7 +109,18 @@ const FeatureList = ({ features, notIncluded, compact = false }: { features: str
 };
 
 // Plan Card Component
-const PlanCard = ({ plan, index, compact = false, isLast }: { plan: any; index: number; compact?: boolean; isLast?: boolean }) => {
+interface Plan {
+  plan_id: string;
+  plan_name: string;
+  plan_pricing: {
+    plate: string;
+    monthly: string;
+  };
+  plan_features: string[];
+  features_not_incl?: string[];
+}
+
+const PlanCard = ({ plan, index, compact = false, isLast }: { plan: Plan; index: number; compact?: boolean; isLast?: boolean }) => {
   const { plan_name, plan_pricing, plan_features, features_not_incl } = plan;
   const isDeluxe = plan_name === "Deluxe";
 
@@ -174,7 +185,12 @@ const PlanCard = ({ plan, index, compact = false, isLast }: { plan: any; index: 
   );
 };
 
-const MealCard = ({ details, variant = "normal" }: { details: any; variant?: string }) => {
+interface MealDetails {
+  name: string;
+  plans: Plan[];
+}
+
+const MealCard = ({ details, variant = "normal" }: { details: MealDetails; variant?: string }) => {
   const { name, plans } = details;
   const isCompact = variant === "compact";
 
@@ -243,7 +259,7 @@ const MealCard = ({ details, variant = "normal" }: { details: any; variant?: str
             {/* Pricing Section */}
             <div className={`p-4 sm:p-6 flex-1 ${isCompact ? "" : "p-6 sm:p-8"}`}>
               <div className={`flex ${isCompact ? "flex-col gap-4" : "flex-col md:flex-row gap-4 md:gap-6"}`}>
-                {plans.map((plan: any, index: number) => (
+                {plans.map((plan: Plan, index: number) => (
                   <PlanCard
                     key={plan.plan_id}
                     plan={plan}

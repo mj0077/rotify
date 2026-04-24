@@ -62,7 +62,7 @@ export default function AdminWaitlistPage() {
       });
       
       if (res.ok) {
-        setEntries((prev) => prev.filter((entry: any) => entry.id !== id));
+        setEntries((prev) => prev.filter((entry) => entry.id !== id));
         fetchEntries(); // Refresh stats
       } else {
         alert("Failed to delete entry");
