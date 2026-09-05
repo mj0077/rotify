@@ -226,7 +226,7 @@ const Hero = () => {
                   className="text-3xl md:text-4xl font-bold text-[#FCDF59] tracking-tight"
                   style={{ fontFamily: "NeueMachina, serif" }}
                 >
-                  500+
+                  5000+
                 </span>
                 <span className="text-xs uppercase tracking-wider text-[#FCDF59]/50 mt-1">
                   Happy Customers
