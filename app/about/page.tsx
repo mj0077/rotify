@@ -117,7 +117,7 @@ const AboutPage = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FCDF59]/10 border border-[#FCDF59]/20 mb-6">
               <span className="w-2 h-2 rounded-full bg-[#FCDF59] animate-pulse" />
               <span className="text-xs uppercase tracking-[0.2em] text-[#FCDF59]/80 font-medium">
-                Since 2020
+                Since 2019
               </span>
             </div>
 
